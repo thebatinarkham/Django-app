@@ -1,0 +1,62 @@
+{% extends 'base.html'%}
+
+{% load static %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+
+
+{% block title %} | Browse Property
+
+{% endblock  %}
+
+{% block content %}
+
+<section class="bg-light">
+    <!-- sidebar -->
+    {% include 'partials/_sidebar.html' %}
+
+    <main role="main" class="col-md-8 ml-sm-auto col-lg-10 px-4">
+
+        <div class="container">
+            <div class="py-5 text-center">
+
+                <h2><i class="fab fa-houzz"></i> Property Listing</h2>
+                <p class="lead">List your Property Here...</p>
+            </div>
+
+            <div class="row">
+                </div>
+                <div class="col-md-8 order-md-1">
+                    <h4 class="mb-3">Realtor</h4>
+
+
+
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <!-- Alerts -->
+                        {% include 'partials/_alerts.html' %}
+
+                        {{ form | crispy }}
+
+                        <input type="submit" value="Create Listing  " id="" class="btn btn-block text-center btn-info">
+                    </form>
+                </div>
+            </div>
+
+            <footer class="my-5 pt-5 text-muted text-center text-small">
+                <p class="mb-1">&copy; 2017-2018 Company Name</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#">Privacy</a></li>
+                    <li class="list-inline-item"><a href="#">Terms</a></li>
+                    <li class="list-inline-item"><a href="#">Support</a></li>
+                </ul>
+            </footer>
+        </div>
+    </main>
+
+
+
+</section>
+
+
+{% endblock %}

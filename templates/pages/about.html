@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block title %} | About us
+
+{% endblock  %}
+
+{% block content %}
+
+
+
+
+
+<section class="hbox stretch">
+    <!-- sidebar -->
+    {% include 'partials/_sidebar.html' %}
+
+    <section class="vbox">
+        <main role="main" class="col-md-8 ml-sm-auto col-lg-10 px-4">
+
+            <section class="scrollable wrapper-lg">
+
+                <div class="row">
+
+                    <div class="col-sm-9">
+
+                                {% comment %} <div class="post-media"> <img src="{{ url % 'image/p4.jpg'%}}" class="img-full" style="height:450px"> {% endcomment %}
+
+                    </div>
+
+
+
+                    <div class="col-sm-">
+                            {% if mvp_realtors %}
+                            {% for realtor  in mvp_realtors %}
+                        <div class="card" style="width: 17rem;">
+                            <img src="{{realtor.photo.url}}" class="card-img-top" alt="..." style="height: 200px">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ realtor.name}}</h5>
+                                <p class="card-text">{{realtor.description}}</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                        
+                        {% endfor %}
+                        
+                    {% endif %}
+                    </div>
+
+                </div>
+            </section>
+            <section class="card-group" id="">
+            {% if realtors %}
+            {% for realtor in realtors  %}
+            <div class="row">
+                <div class="col">
+                    <div class="card" style="width: 18rem;    margin-top: 10px; margin-bottom: 20px;">
+
+
+                        <img src="{{ realtor.photo.url }}" class="card-img-top" alt="..." style="    height: 220px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{realtor.name}}</h5>
+                            <p class="card-text">
+                                    Email : {{realtor.email}}
+                            </p>
+                            <p class="card-text"><small class="text-muted">
+                                    Phone : {{realtor.phone}}
+                                    </small></p>
+                            
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col" class="">
+                
+                </div>
+
+            </div>
+            </div>
+
+
+            {% endfor %}
+            {% else %}
+            <div class="">No listings available...</div>
+            {% endif %}
+
+
+
+            </section>
+
+            <div class="modal fade" id="inquiryModal" role="dialog" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-title" id="inquiryModalLabel">Make An Inquiry</div>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span>×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="property_name" class="col-form-label">Property:</label>
+                                    <input type="text" name="listing" class="form-control" value="45 Drivewood Cirlce"
+                                        disabled="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="col-form-label">Name:</label>
+                                    <input type="text" name="name" class="form-control" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Email:</label>
+                                    <input type="email" name="email" class="form-control" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" class="col-form-label">Phone:</label>
+                                    <input type="text" name="phone" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message" class="col-form-label">Message:</label>
+                                    <textarea name="message" class="form-control"></textarea>
+                                </div>
+                                <hr>
+                                <input type="submit" value="Send" class="btn btn-block btn-secondary">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    </main>
+
+
+</section>
+
+
+{% endblock %}

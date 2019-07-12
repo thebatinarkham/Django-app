@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block title %} | Dashboard
+
+{% endblock  %}
+
+{% block content %}
+<main role="main" class="col-md-8 ml-sm-auto col-lg-10 px-4">
+
+    <section class="hbox stretch bg-white-only">
+        <!-- sidebar -->
+        {% include 'partials/_sidebar.html' %}
+
+        <section class="vbox container ">
+            <section id="login" class="bg-white-only  py-5 ">
+                <div class="row mb-5 thumbs">
+
+                    <div class="caption wrapper-lg">
+
+                        <section id="dashboard" class="py-4">
+                            <div class="container">
+                                <div class="row">
+                                    <h3 class="font-thin m-b">
+                                        <!-- Alerts -->
+                                        {% include 'partials/_alerts.html' %} 
+                                        
+                                    </h3>
+                                    <div class="col">
+                                        <h2>Welcome {{ user}}</h2>
+                                        {% if  contacts %}
+                                            <p>Here are the property listings that you have inquired about</p>
+                                        <table class=" bg-black">
+                                            <thead class="table font-big bg-black">
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Property</th>
+                                                    <th scope="col"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="font-medium">
+                                            {% for contact in contacts %}
+                                                <tr>
+                                                    <td>{{ contact.id }}</td>
+                                                    <td>{{ contact.listing }}</td>
+                                                    <td>
+                                                        <a class="btn btn-light" href="{% url 'listing' contact.listing_id %}">
+                                                        View Listing</a>
+                                                    
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                                
+                                                
+                                            </tbody>
+                                        </table>
+                                        {% else %}
+                                            <p>You had not make any enquire</p>
+                                        {% endif %}
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+
+
+
+
+                    </div>
+                </div>
+            </section>
+
+
+        </section>
+    </section>
+
+</main>
+
+
+
+
+</section>
+
+{% endblock %}

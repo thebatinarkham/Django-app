@@ -1,0 +1,106 @@
+{% extends 'base.html'%}
+
+
+{% load static %}
+
+
+{% block content %}
+{% load humanize %}
+
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+    <!-- sidebar -->
+    {% include 'partials/_sidebar.html' %}
+
+
+                <!-- Alerts -->
+                {% include 'partials/_alerts.html' %}
+
+    
+        <h2 class="">Search
+        </h2>
+
+        <section class="card-group" id="">
+
+
+
+
+            {% if listings %}
+            {% for listing in listings  %}
+            <div class="row">
+                <div class="col">
+                    <div class="card" style="width: 18rem;    margin-top: 10px;">
+
+
+                        <img src="{{ listing.photo_main.url }}" class="card-img-top" alt="..."
+                            style="    height: 220px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{listing.title}}</h5>
+                            <p class="card-text">
+                                {{ listing.city }},{{listing.state  }},
+                                {{ listing.zipcode }}
+                            </p>
+                            <p class="card-text"><small class="text-muted">Last updated
+                                    {{ listing.list_date | timesince }}
+                                    ago</small></p>
+
+                            <a href="{% url 'listing' listing.id %}" class="btn btn-block btn-primary">More info</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col" class="w-50"></div>
+
+            </div>
+            </div>
+
+
+            {% endfor %}
+            {% else %}
+            <div class="">No listings available...</div>
+            {% endif %}
+
+
+            <div class="row " style="margin-top: 30px;">
+
+                {% if user.is_authenticated %}
+
+                {% else %}
+                <div class="col-sm-6 ">
+                    <div class="">
+                        <a href="{% url 'login'%}">
+
+                            <span class="h4"><i class="far fa-user"></i></i>
+                                Login or Create account
+                            </span> <span class="text-muted">Save and
+                                share your playlist with your friends when you log in or create
+                                an account.</span> </a> </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class=""> <a href="{% url 'register'%}"> <span class="h4 "><i class="fas fa-cloud-download-alt"></i>
+                                Register</span> <span class="text-muted">Get the apps
+                                for desktop and mobile to start listening music at anywhere and
+                                anytime.
+                                nat</span> </a>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+                    </div>
+                    {% endif %}
+
+
+
+                </div>
+
+            </div>
+            <div class="w-100"></div>
+        </section>
+
+</main>
+
+
+
+
+
+
+{% endblock %}

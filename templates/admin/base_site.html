@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+
+{% load static%}
+{% block branding %}
+     <link rel="stylesheet" href="{%static '/fonts/fonts/all.css' %}">
+     <h1 class="bg-info"><i class="fab fa-houzz"></i> Houzz </h1>
+{% endblock  %}
+ 
+ {% block extrastyle %}
+    <link rel="stylesheet" href="{%static '/css/admin.css' %}"> 
+ {% endblock  %}

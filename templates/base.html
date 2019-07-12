@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="app">
+
+<head>
+    <meta charset="utf-8" />
+        <title> Houzz  {% block title %} {% endblock  %}</title>
+    <meta name="description"
+        content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="{%static '/css/style.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{%static '/css/bootstrap.css' %}" type="text/css" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{%static '/css/dashboard.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{%static '/css/form-validation.css' %}" type="text/css" />
+    <script src="{%static '/js/jquery-slim.min.js' %}" ></script>
+
+    
+    <link rel="stylesheet" href="{%static '/fonts/fonts/all.css' %}">
+    <link rel="stylesheet" href="{%static '/css/signin.css' %}">
+    
+    
+</head>
+
+
+<body class="">
+
+    <section class="vbox">
+        <!-- Top navbar -->
+        {% include 'partials/_navbar.html' %}
+
+        
+        {% block content%} {% endblock %}
+
+</body>
+<!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+
+    </script>
+
+
+<script src="{%static '/js/vendor/popper.min.js' %}"></script>
+<script src="{%static '/js/bootstrap.js' %}"></script>
+<script src="{%static '/js/app.js' %}"></script>
+<script src="{%static '/js/skeleton-screen/jquery.scheletrone.js' %}" ></script>
+<script src="{%static '/js/moment.js' %}" ></script>
+    
+    
+    <link rel="stylesheet" href="{%static '/css/jquery.skeleton.css' %}">
+
+</html>
